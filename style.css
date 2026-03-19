@@ -1,0 +1,532 @@
+/*
+  Basic stylesheet for the Username Marketplace website.
+
+  The design follows minimalist principles that emphasise essential elements,
+  generous white space and a limited colour palette. Minimalist design uses
+  white space to create balance and improve readability【689608681701467†L51-L55】,
+  and selects a cohesive colour scheme to avoid visual clutter【689608681701467†L57-L61】.
+  Simple typography aids clarity【689608681701467†L63-L66】.
+
+  You can customise the colour variables below to suit your brand; the rest of
+  the styles will adapt automatically.
+*/
+
+:root {
+  /* Dark blue and black theme. A limited colour palette improves clarity and
+     reduces visual clutter【689608681701467†L57-L61】. */
+  --primary-color: #0EA5E9;       /* Sky blue for buttons and accents */
+  --primary-color-hover: #38BDF8; /* Lighter blue for hover state */
+  /* Use a pure black background for the page, allowing floating names to stand out. */
+  --background-color: #000000;
+  --foreground-color: #F5F7FA;    /* Slightly brighter off‑white for better contrast on black */
+  /* Make panels and tables semi‑transparent so the floating usernames show through. */
+  --accent-bg: rgba(0, 0, 0, 0.5);
+  /* Use a translucent border colour that blends with the dark theme. */
+  --border-color: rgba(0, 0, 0, 0.6);
+  --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  line-height: 1.6;
+}
+
+/* Header styles */
+.site-header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+.site-title {
+  margin: 0;
+  /* Larger headline for branding on the home page and stock page */
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--foreground-color);
+}
+
+/* Ensure the logo (site title) link inherits the typography and colour. */
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Navigation container below the header. A professional website should include
+   a clean, intuitive navigation menu with a limited number of top‑level links
+   to aid user experience【22714066985742†L100-L119】【22714066985742†L180-L187】. */
+.site-nav {
+  margin-top: 1rem;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.site-nav a {
+  color: var(--foreground-color);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: var(--primary-color);
+  background-color: rgba(14, 165, 233, 0.2);
+}
+.tagline {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: #AAB5C1; /* Light gray for subtle contrast on dark background */
+}
+
+/* Main container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section headings */
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--foreground-color);
+}
+
+/* Table styles */
+.table-wrapper {
+  overflow-x: auto;
+  background-color: var(--accent-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+/* Table header uses a dark background with light text for contrast */
+.product-table thead {
+  background-color: var(--accent-bg);
+  color: var(--primary-color);
+}
+
+.product-table th,
+.product-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  /* Increase the font size slightly for better readability on dark backgrounds */
+  font-size: 1rem;
+}
+
+.product-table th {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.product-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Alternate row shading for readability on dark backgrounds */
+.product-table tbody tr:nth-child(even) {
+  /* Semi‑transparent row shading: let the floating names be visible through even rows */
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.product-table td:last-child {
+  text-align: center;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #010D1A; /* Dark background text colour for contrast */
+  text-decoration: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* On hover, invert colours slightly for feedback */
+.btn:hover,
+.btn:focus {
+  background-color: var(--primary-color-hover);
+  color: #010D1A;
+}
+
+/* Call to action section */
+.cta {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--accent-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cta p {
+  margin: 0;
+}
+
+.cta-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cta-link:hover,
+.cta-link:focus {
+  text-decoration: underline;
+}
+
+/* Reviews section styles */
+/*
+  The reviews page uses a dedicated container to hold short testimonials. We keep
+  the look consistent with the rest of the site by using the same semi‑transparent
+  background and border styling as the call‑to‑action panels. Each review is
+  separated by a subtle divider to improve readability on dark backgrounds.
+*/
+.reviews-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--accent-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.review {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Remove bottom border on the last review for a clean finish */
+.review:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Button container within CTA section. Use flexbox with wrapping so
+   category buttons line up neatly and wrap on small screens. */
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6B7280; /* Gray 500 */
+}
+
+/* Floating background names */
+.floating-names {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-name {
+  position: absolute;
+  /* Reduce the size range of the floating names to make them less intrusive.
+     They now scale between 1rem and 3rem depending on viewport width. */
+  font-size: clamp(1rem, 4vw, 3rem);
+  font-weight: 600;
+  /* Increase the transparency so names fade more into the background while
+     still glowing softly. */
+  /* Increase opacity so floating names are more visible */
+  opacity: 0.12;
+  color: var(--primary-color);
+  white-space: nowrap;
+  /* Add a stronger glow effect by increasing the text‑shadow radius and
+     layering multiple glows. This helps the names stand out subtly on
+     dark backgrounds. */
+  text-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color), 0 0 24px var(--primary-color);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Assign different speeds, delays and vertical positions to each name */
+/* Individual floating name settings: each moves in a different direction with
+   its own duration and delay. We set top/left values to spread them out. */
+.floating-name:nth-child(1) {
+  top: 10%; left: -20%;
+  animation-name: float-lr;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+.floating-name:nth-child(2) {
+  top: 20%; left: 110%;
+  animation-name: float-rl;
+  animation-duration: 32s;
+  animation-delay: -8s;
+}
+.floating-name:nth-child(3) {
+  top: 35%; left: -15%;
+  animation-name: float-diag1;
+  animation-duration: 34s;
+  animation-delay: -10s;
+}
+.floating-name:nth-child(4) {
+  top: 50%; left: 120%;
+  animation-name: float-diag2;
+  animation-duration: 28s;
+  animation-delay: -6s;
+}
+.floating-name:nth-child(5) {
+  top: 70%; left: -10%;
+  animation-name: float-tb;
+  animation-duration: 36s;
+  animation-delay: -12s;
+}
+.floating-name:nth-child(6) {
+  top: 15%; left: 105%;
+  animation-name: float-bt;
+  animation-duration: 31s;
+  animation-delay: -9s;
+}
+.floating-name:nth-child(7) {
+  top: 45%; left: -25%;
+  animation-name: float-lr;
+  animation-duration: 33s;
+  animation-delay: -7s;
+}
+.floating-name:nth-child(8) {
+  top: 55%; left: 115%;
+  animation-name: float-rl;
+  animation-duration: 29s;
+  animation-delay: -5s;
+}
+.floating-name:nth-child(9) {
+  top: 30%; left: -18%;
+  animation-name: float-diag2;
+  animation-duration: 35s;
+  animation-delay: -11s;
+}
+.floating-name:nth-child(10) {
+  top: 75%; left: 120%;
+  animation-name: float-diag1;
+  animation-duration: 37s;
+  animation-delay: -13s;
+}
+
+/* Additional floating name settings for the 11th username (jnqd). This one
+   floats from bottom to top to add more variety to the motion patterns. */
+.floating-name:nth-child(11) {
+  top: 25%; left: -15%;
+  animation-name: float-tb;
+  animation-duration: 32s;
+  animation-delay: -4s;
+}
+
+/* Additional floating name settings for names beyond the first 11. These
+   definitions ensure that each extra name has its own trajectory, speed and
+   start position, creating a lively and varied background on the home page. */
+.floating-name:nth-child(12) {
+  top: 5%; left: -30%;
+  animation-name: float-lr;
+  animation-duration: 30s;
+  animation-delay: -2s;
+}
+.floating-name:nth-child(13) {
+  top: 15%; left: 130%;
+  animation-name: float-rl;
+  animation-duration: 34s;
+  animation-delay: -4s;
+}
+.floating-name:nth-child(14) {
+  top: 40%; left: -25%;
+  animation-name: float-diag1;
+  animation-duration: 32s;
+  animation-delay: -6s;
+}
+.floating-name:nth-child(15) {
+  top: 60%; left: 120%;
+  animation-name: float-diag2;
+  animation-duration: 36s;
+  animation-delay: -8s;
+}
+.floating-name:nth-child(16) {
+  top: 80%; left: -20%;
+  animation-name: float-tb;
+  animation-duration: 35s;
+  animation-delay: -10s;
+}
+.floating-name:nth-child(17) {
+  top: 25%; left: 110%;
+  animation-name: float-bt;
+  animation-duration: 29s;
+  animation-delay: -3s;
+}
+.floating-name:nth-child(18) {
+  top: 45%; left: -15%;
+  animation-name: float-lr;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+.floating-name:nth-child(19) {
+  top: 55%; left: 125%;
+  animation-name: float-rl;
+  animation-duration: 31s;
+  animation-delay: -7s;
+}
+.floating-name:nth-child(20) {
+  top: 35%; left: -10%;
+  animation-name: float-diag2;
+  animation-duration: 33s;
+  animation-delay: -9s;
+}
+.floating-name:nth-child(21) {
+  top: 65%; left: 120%;
+  animation-name: float-diag1;
+  animation-duration: 30s;
+  animation-delay: -11s;
+}
+.floating-name:nth-child(22) {
+  top: 15%; left: -25%;
+  animation-name: float-lr;
+  animation-duration: 28s;
+  animation-delay: -6s;
+}
+.floating-name:nth-child(23) {
+  top: 50%; left: 130%;
+  animation-name: float-rl;
+  animation-duration: 34s;
+  animation-delay: -12s;
+}
+.floating-name:nth-child(24) {
+  top: 70%; left: -18%;
+  animation-name: float-diag1;
+  animation-duration: 35s;
+  animation-delay: -13s;
+}
+.floating-name:nth-child(25) {
+  top: 85%; left: 110%;
+  animation-name: float-diag2;
+  animation-duration: 36s;
+  animation-delay: -15s;
+}
+.floating-name:nth-child(26) {
+  top: 10%; left: -35%;
+  animation-name: float-tb;
+  animation-duration: 32s;
+  animation-delay: -2s;
+}
+.floating-name:nth-child(27) {
+  top: 30%; left: 115%;
+  animation-name: float-bt;
+  animation-duration: 34s;
+  animation-delay: -6s;
+}
+.floating-name:nth-child(28) {
+  top: 50%; left: -20%;
+  animation-name: float-diag1;
+  animation-duration: 38s;
+  animation-delay: -8s;
+}
+.floating-name:nth-child(29) {
+  top: 75%; left: 105%;
+  animation-name: float-diag2;
+  animation-duration: 33s;
+  animation-delay: -12s;
+}
+
+/* Randomised floating animations for the background names */
+@keyframes float-lr {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes float-rl {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes float-tb {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes float-bt {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes float-diag1 {
+  0% {
+    transform: translate(-100vw, 100vh);
+  }
+  100% {
+    transform: translate(100vw, -100vh);
+  }
+}
+
+@keyframes float-diag2 {
+  0% {
+    transform: translate(100vw, 100vh);
+  }
+  100% {
+    transform: translate(-100vw, -100vh);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "epsteins-users-store",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "stripe": "^18.3.0"
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Epstein&#39;s Users</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Home page for Epstein's Users. This page introduces the brand with a
+    clean, minimalist layout and an animated backdrop of rare 3‑ and 4‑letter
+    usernames bouncing across the screen. Minimalist design reduces visual
+    clutter and focuses on essential content【689608681701467†L31-L41】,
+    while a limited colour palette keeps the interface cohesive【689608681701467†L57-L61】.
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title"><a href="index.html">Epstein&#39;s Users</a></h1>
+    <p class="tagline">Rare 3‑, 4‑letter &amp; 4‑number Discord usernames</p>
+    <!-- Primary navigation. A clean header with a well‑designed navigation menu
+         helps keep visitors engaged and makes a site look professional【22714066985742†L100-L119】. -->
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="3l.html">3L</a></li>
+        <li><a href="3l-semi.html">3L Semi</a></li>
+        <li><a href="4l.html">4L</a></li>
+        <li><a href="4n.html">4N</a></li>
+        <li><a href="stock.html">All Stock</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <!-- Floating background names: these spans display random rare usernames not
+         currently available in stock. They bounce around the page to convey
+         scarcity and exclusivity. -->
+    <div class="floating-names">
+      <!-- 3-letter usernames -->
+      <span class="floating-name">kzq</span>
+      <span class="floating-name">wxl</span>
+      <span class="floating-name">hqt</span>
+      <span class="floating-name">ncf</span>
+      <span class="floating-name">dqx</span>
+      <span class="floating-name">qsm</span>
+      <span class="floating-name">lfv</span>
+      <span class="floating-name">prd</span>
+      <span class="floating-name">jkf</span>
+      <span class="floating-name">sxz</span>
+      <span class="floating-name">mvn</span>
+      <span class="floating-name">ptn</span>
+      <span class="floating-name">brx</span>
+      <span class="floating-name">dbf</span>
+      <!-- 4-letter usernames -->
+      <span class="floating-name">ezpx</span>
+      <span class="floating-name">jqhr</span>
+      <span class="floating-name">kldr</span>
+      <span class="floating-name">cvnp</span>
+      <span class="floating-name">fqrs</span>
+      <span class="floating-name">nmxz</span>
+      <span class="floating-name">psbt</span>
+      <span class="floating-name">tvqk</span>
+      <span class="floating-name">glhd</span>
+      <span class="floating-name">pntl</span>
+      <span class="floating-name">yvzw</span>
+      <span class="floating-name">qwlz</span>
+      <span class="floating-name">vfrz</span>
+      <span class="floating-name">xzpt</span>
+      <span class="floating-name">ghjk</span>
+    </div>
+    <!-- Call to action section now offers category navigation. Users can jump
+         directly to the category of interest (3L, 3L Semi, 4L, 4N) or view
+         the full stock. Keeping navigation simple improves usability on
+         minimalist websites【689608681701467†L31-L41】. -->
+    <section class="cta">
+      <p>Browse our categories:</p>
+      <div class="cta-buttons">
+        <a href="3l.html" class="btn">3L</a>
+        <a href="3l-semi.html" class="btn">3L Semi</a>
+        <a href="4l.html" class="btn">4L</a>
+        <a href="4n.html" class="btn">4N</a>
+        <a href="stock.html" class="btn">All Stock</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year"></span> Epstein&#39;s Users. All rights reserved.</p>
+  </footer>
+  <!-- The script updates the current year in the footer. It gracefully does
+       nothing if no product table or Discord link is present. -->
+  <script src="script.js"></script>
+</body>
+</html>

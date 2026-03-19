@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Epstein&#39;s Users – 3L Semi Usernames</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    3L Semi page lists three‑letter usernames that include a punctuation mark
+    (a dot or underscore). It highlights rare combinations that are slightly
+    longer or more complex than simple three‑letter names.
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title"><a href="index.html">Epstein&#39;s Users</a></h1>
+    <p class="tagline">Current inventory of rare 3‑letter usernames with punctuation</p>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="3l.html">3L</a></li>
+        <li><a href="3l-semi.html">3L Semi</a></li>
+        <li><a href="4l.html">4L</a></li>
+        <li><a href="4n.html">4N</a></li>
+        <li><a href="stock.html">All Stock</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Floating names for the 3L Semi page: use semi‑punctuated combos to
+         reinforce the theme. These bounce in random directions to create
+         subtle movement. -->
+    <div class="floating-names">
+      <span class="floating-name">ct_x</span>
+      <span class="floating-name">y.dh</span>
+      <span class="floating-name">xe.i</span>
+      <span class="floating-name">a.b</span>
+      <span class="floating-name">l_m</span>
+      <span class="floating-name">z_r</span>
+      <span class="floating-name">v.x</span>
+      <span class="floating-name">m_s</span>
+    </div>
+    <section class="product-section">
+      <h2>3‑Letter Usernames (With Punctuation)</h2>
+      <div class="table-wrapper">
+        <table id="product-table" class="product-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Meaning</th>
+              <th>Price (USD)</th>
+              <th>Stock</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated by script.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="cta">
+      <p>
+        Ready to claim your unique username? Join our
+        <a href="#" id="discord-link" class="cta-link" target="_blank" rel="noopener noreferrer">Discord server</a>
+        and navigate to the <strong>purchase</strong> channel to complete your purchase.
+      </p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year"></span> Epstein&#39;s Users. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      renderCategory('3L-semi');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Epstein's Users – Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Cart page for Epstein's Users. This page displays items that users have
+    added to their cart, along with quantities, individual prices, a subtotal
+    and a checkout button. A simple cart interface gives visitors more
+    control over their purchase before they proceed【22714066985742†L100-L119】.
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title"><a href="index.html">Epstein's Users</a></h1>
+    <p class="tagline">Your Cart</p>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="3l.html">3L</a></li>
+        <li><a href="3l-semi.html">3L Semi</a></li>
+        <li><a href="4l.html">4L</a></li>
+        <li><a href="4n.html">4N</a></li>
+        <li><a href="stock.html">All Stock</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="product-section">
+      <h2>Your Selected Usernames</h2>
+      <div class="table-wrapper">
+        <table id="cart-table" class="product-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Meaning</th>
+              <th>Price (USD)</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cart items rendered here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="checkout-options" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;justify-content:flex-end;">
+        <button id="checkout-button" class="btn">Checkout via Discord</button>
+        <button id="stripe-button" class="btn">Pay with Stripe</button>
+      </div>
+      <p style="margin-top:0.75rem;color:#AAB5C1;font-size:0.95rem;text-align:right;">
+        Secure card checkout is powered by Stripe.
+      </p>
+    </section>
+    <section class="cta">
+      <p>
+        Need more names? Visit our
+        <a href="stock.html" class="cta-link">stock page</a>
+        or explore categories above.
+      </p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="current-year"></span> Epstein's Users. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Render the cart and update the cart count when the page loads.
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      renderCart();
+    });
+  </script>
+  <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>
