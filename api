@@ -1,0 +1,72 @@
+import Stripe from 'stripe';
+import catalog from '../data/catalog.json' assert { type: 'json' };
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2025-02-24.acacia',
+});
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { cart } = req.body || {};
+    if (!Array.isArray(cart) || cart.length === 0) {
+      return res.status(400).json({ error: 'Cart is empty.' });
+    }
+
+    const host = req.headers['x-forwarded-host'] || req.headers.host;
+    const protocol = req.headers['x-forwarded-proto'] || 'https';
+    const origin = `${protocol}://${host}`;
+
+    const counts = {};
+    for (const username of cart) {
+      counts[username] = (counts[username] || 0) + 1;
+    }
+
+    const line_items = Object.entries(counts).map(([username, quantity]) => {
+      const product = catalog.find((p) => p.username === username);
+      if (!product) {
+        throw new Error(`Unknown product: ${username}`);
+      }
+      return {
+        quantity,
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: username,
+            description: 'Rare Discord username',
+          },
+          unit_amount: Math.round(product.price * 100),
+        },
+      };
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items,
+      success_url: `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/cancel.html`,
+      billing_address_collection: 'auto',
+      phone_number_collection: { enabled: false },
+      metadata: {
+        usernames: Object.keys(counts).join(','),
+      },
+    });
+
+    return res.status(200).json({ sessionId: session.id });
+  } catch (error) {
+    console.error('Stripe session error:', error);
+    return res.status(500).json({ error: error.message || 'Stripe session creation failed.' });
+  }
+}
+
+export default function handler(req, res) {
+  const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+  if (!publishableKey) {
+    return res.status(500).json({ error: 'Missing STRIPE_PUBLISHABLE_KEY environment variable.' });
+  }
+  res.status(200).json({ publishableKey });
+}
